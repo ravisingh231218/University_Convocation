@@ -396,6 +396,7 @@
             let popup = document.getElementById("popupMessage");
             let movingDot = document.getElementById("movingFile");
             let animatedLine = document.getElementById("animatedLine");
+            let header = document.querySelector(".header"); 
 
             animatedLine.style.display = "block";
             motionAnim.beginElement();
@@ -408,6 +409,8 @@
                 uploadBox.classList.add("hidden");
                 submitBtn.classList.add("hidden");
                 createExplosions();
+                        header.style.transform = "translateY(-1cm)";
+
             }, 5000);
         });
 
