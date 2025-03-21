@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Submission</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+
+    body {
+    background: linear-gradient(to bottom, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb, #a18cd1);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    margin-top: 0.3cm;
+    max-height: calc(100vh - 0.8cm);
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 300px;
+    height: auto;
+}
+
+.line-container {
+    position: absolute;
+    width: 80%;
+    height: 180px;
+    top: 420px;
+    left: 11cm;
+    text-align: center;
+    display: none;
+}
+
+.moving-dot {
+    fill: red;
+    animation: moveAlongPath 5s ease-in-out forwards;
+}
+
+.side-container {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+.side-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.side-box.right {
+    position: relative;
+    left: -1cm;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.side-box.left {
+    position: relative;
+    right: -3cm;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.box-container {
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    margin-bottom: 20px;
+}
+
+.box {
+    background: #b0c4de;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    width: 180px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.box img {
+    width: 100px;
+    height: auto;
+    max-width: 100%;
+}
+
+.submit-btn {
+    background: #28a745;
+    color: white;
+    padding: 15px 25px;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    margin: auto;
+    position: relative;
+    top: -2cm;
+}
+
+.submit-btn:hover {
+    background: #218838;
+}
+
+.text-section p {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.explosion {
+    position: absolute;
+    font-size: 30px;
+    color: yellow;
+    animation: explode 1s linear infinite;
+}
+
+@keyframes explode {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate(0, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2) translate(var(--x), var(--y));
+    }
+}
+
+.file-input {
+    display: none;
+}
+
+.upload-icon {
+    font-size: 30px;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.uploaded {
+    color: green;
+    font-weight: bold;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: green;
+    color: white;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.balloon, .star {
+    position: absolute;
+    opacity: 0.8;
+}
+
+.balloon {
+    width: 20px;
+    height: 30px;
+    background: red;
+    border-radius: 50%;
+    animation: rise 3s linear infinite;
+}
+
+.star {
+    color: yellow;
+    font-size: 30px;
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 165, 0, 0.7);
+    }
+    50% {
+        opacity: 0.5;
+        text-shadow: 0 0 5px rgba(255, 99, 71, 0.7), 0 0 15px rgba(255, 140, 0, 0.6);
+    }
+}
+
+@keyframes rise {
+    0% {
+        bottom: 0;
+    }
+    100% {
+        bottom: 100%;
+    }
+}
+
+
+    </style>
+    <style>
+        .main-container {
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            color: #222;
+        }
+
+        .convocation-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #d9534f;
+        }
+
+        .date-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0275d8;
+        }
+
+        .event-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #5cb85c;
+        }
+
+        .by-title {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #d9534f;
+        }
+
+        .name-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #292b2c;
+        }
+
+        .designation-title {
+            font-size: 0.8rem;
+            line-height: 1.2;
+            color: #292b2c;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="side-container">
+        <div class="side-box left">
+            <img src="./Rajypal.png" alt="Rajypal" width="140">
+        </div>
+        <div class="side-box right">
+            <img src="./Screenshot_4.png" alt="Vice Chancellor" width="200" height="180">
+
+
+        </div>
+    </div>
+
+    <div class="header">
+        <img src="./logo_full.png" alt="Logo" class="logo"
+             style="display: block; margin: 0 auto; width: 500px; height: auto;">
+    </div>
+    <div class="main-container text-center">
+        <h1 class="convocation-title">7th CONVOCATION</h1>
+        <h2 class="date-title">Wednesday 26th March 2025</h2>
+        <h3 class="event-title">Degree Data Uploading On</h3>
+        <h3 class="event-title">Digilocker</h3>
+        <h4 class="by-title">By</h4>
+        <h2 class="name-title">LT GEN GURMIT SINGH</h2>
+        <h6 class="designation-title">
+            PVSM, UYSM, AVSM, VSM (RETD) <br>
+            HON'BLE GOVERNOR OF UTTARAKHAND <br>
+            & CHANCELLOR OF UNIVERSITY
+        </h6>
+    </div>
+    <br />
+    <div class="box-container">
+        <div class="box" id="uploadBox">
+            <p>Upload Data</p>
+            <label class="upload-icon" for="fileInput">📂</label>
+            <input type="file" id="fileInput" class="file-input">
+        </div>
+       
+               <svg id="animatedLine" class="line-container" width="500" height="200">
+            <path id="arcPath" d="M 100 100 Q 250 0, 400 100" stroke="green" stroke-width="3" fill="transparent"></path>
+            <circle id="movingDot" r="10" fill="red">
+                <animateMotion id="motionAnim" begin="indefinite" dur="5s" repeatCount="1" fill="freeze"
+                    keyTimes="0; 0.4; 0.6; 1"
+                    values="0%; 50%; 50%; 100%">
+                    <mpath href="#arcPath" />
+                </animateMotion>
+            </circle>
+        </svg>
+
+        <div class="box" id="digiLockerBox">
+            <img src="./Digilocker.png" alt="DigiLocker Image">
+        </div>
+
+    </div>
+    <button class="submit-btn" id="submitBtn">Submit</button>
+    <div class="popup" id="popupMessage">Data Successfully Saved</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script>
+        document.getElementById("submitBtn").addEventListener("click", function () {
+            let animatedLine = document.getElementById("animatedLine");
+            let movingDot = document.getElementById("movingDot");
+            let popup = document.getElementById("popupMessage");
+            animatedLine.style.display = "block";
+            let motionAnim = document.getElementById("motionAnim");
+            if (motionAnim) {
+                motionAnim.beginElement();
+            }
+            setTimeout(() => {
+                animatedLine.style.display = "none";
+                movingDot.style.display = "none";
+                popup.style.display = "block";
+                createExplosions();
+                setTimeout(() => { location.reload(); }, 5000);
+            }, 5000);
+        });
+        function createExplosions() {
+            for (let i = 0; i < 30; i++) {
+                let balloon = document.createElement("div");
+                balloon.className = "balloon";
+                balloon.style.left = Math.random() * window.innerWidth + "px";
+                balloon.style.bottom = "-50px";
+                balloon.style.animationDelay = Math.random() * 2 + "s";
+                document.body.appendChild(balloon);
+                let star = document.createElement("div");
+                star.className = "star";
+                star.innerHTML = "★";
+                star.style.left = Math.random() * window.innerWidth + "px";
+                star.style.top = Math.random() * window.innerHeight + "px";
+                star.style.fontSize = Math.random() * 30 + 20 + "px";
+                document.body.appendChild(star);
+            }
+        }
+    </script>
+</body>
+
+</html>
