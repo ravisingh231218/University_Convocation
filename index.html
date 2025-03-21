@@ -1,21 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Submission</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-   <style>
+    <style>
         body {
-            // background: linear-gradient(to bottom, #b3e0ff, #66c2ff, #1a75ff);
-            /*background: linear-gradient(to bottom, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb, #a18cd1);*/
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb, #a18cd1);
             /*background: radial-gradient(circle, rgba(238,187,210,1) 44%, rgba(233,148,227,1) 100%);*/
             /*background: radial-gradient(circle, rgba(106,181,214,1) 100%, rgba(233,148,227,1) 100%);*/
             /*background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(204,153,153,1) 50%, rgba(252,176,69,1) 100%);*/
             /*background: linear-gradient(to bottom, #ff7e5f, #feb47b);*/
             /*background: linear-gradient(to bottom, #141e30, #243b55);*/
-            background: linear-gradient(135deg, #ffcccc, #ff9999);
+            /*background: linear-gradient(135deg, #ffcccc, #ff9999);*/
             min-height: 100vh;
+            /*background-image: url('../../Image2/pexels-stywo-1668246.jpg');*/
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -92,9 +91,8 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: #ff7777; /* Slightly darker red */
-            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3), /* Shadow for 3D effect */
-            inset -5px -5px 10px rgba(255, 255, 255, 0.5); /* Inner light */
+            background: #ff7777;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3), inset -5px -5px 10px rgba(255, 255, 255, 0.5);
             border-radius: 20px;
         }
 
@@ -173,23 +171,7 @@
             font-weight: bold;
         }
 
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: green;
-            color: white;
-            padding: 20px;
-            font-size: 22px;
-            font-weight: bold;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-
-
+      
         .balloon, .star {
             position: absolute;
             opacity: 0.8;
@@ -295,23 +277,64 @@
             color: #292b2c;
             font-weight: 400;
         }
+
+        #animatedLine {
+            display: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+        #popupMessage {
+            display: none;
+            position: fixed;
+            top: calc(50% + 7cm);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            background-color: green;
+            padding: 20px;
+            border-radius: 10px;
+            text-shadow: 2px 2px 5px black;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @@keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: green;
+            color: white;
+            padding: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
     <div class="side-container">
         <div class="side-box left">
-            <img src="./Rajypal.png" alt="Rajypal" width="140">
+            <img src="~/Image2/Rajypal.png" alt="Rajypal" width="140">
         </div>
         <div class="side-box right">
-            <img src="./Screenshot_4.png" alt="Vice Chancellor" width="200" height="180">
+            <img src="~/Image2/Screenshot_4.png" alt="Vice Chancellor" width="200" height="180">
 
 
         </div>
     </div>
 
     <div class="header">
-        <img src="./logo_full.png" alt="Logo" class="logo"
+        <img src="~/Image2/logo_full.png" alt="Logo" class="logo"
              style="display: block; margin: 0 auto; width: 500px; height: auto;">
     </div>
     <div class="main-container text-center">
@@ -328,59 +351,69 @@
         </h6>
     </div>
     <br />
-    <div class="box-container">
+    <div class="box-container" id="boxContainer">
         <div class="box" id="uploadBox">
-            <p>Upload Data</p>
             <label class="upload-icon" for="fileInput">📂</label>
             <input type="file" id="fileInput" class="file-input">
         </div>
-       
-               <svg id="animatedLine" class="line-container" width="500" height="200">
-            <path id="arcPath" d="M 100 100 Q 250 0, 400 100" stroke="green" stroke-width="3" fill="transparent"></path>
-            <circle id="movingDot" r="10" fill="red">
-                <animateMotion id="motionAnim" begin="indefinite" dur="5s" repeatCount="1" fill="freeze"
-                    keyTimes="0; 0.4; 0.6; 1"
-                    values="0%; 50%; 50%; 100%">
+
+        <!-- SVG Path Animation -->
+        <svg id="animatedLine" class="line-container" width="500" height="200">
+            <path id="arcPath" d="M 100 100 Q 250 -50, 400 100" stroke="green" stroke-width="3" fill="transparent"></path>
+
+            <text id="movingFile" font-size="30">
+                📂
+                <animateMotion id="motionAnim" begin="click" dur="5s" repeatCount="1" fill="freeze"
+                               keyTimes="0; 0.3; 0.6; 1"
+                               values="0%; 30%; 60%; 100%"
+                               keySplines="0.3 0.1 0.7 1; 0.3 0.1 0.7 1; 0.3 0.1 0.7 1"
+                               calcMode="spline">
                     <mpath href="#arcPath" />
                 </animateMotion>
-            </circle>
+            </text>
         </svg>
 
         <div class="box" id="digiLockerBox">
-            <img src="./Digilocker.png" alt="DigiLocker Image">
+            <img src="~/Image2/Digilocker.png" alt="DigiLocker Image">
         </div>
+        <div class="box-container" id="popupMessage">Data Successfully Uploded On Digilocker</div>
 
     </div>
+
     <button class="submit-btn" id="submitBtn">Submit</button>
-    <div class="popup" id="popupMessage">Data Successfully Saved</div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1"></script>
+
+    <script>
         document.getElementById("submitBtn").addEventListener("click", function () {
-            let animatedLine = document.getElementById("animatedLine");
-            let movingDot = document.getElementById("movingDot");
             let popup = document.getElementById("popupMessage");
+            let movingDot = document.getElementById("movingFile");
+            let animatedLine = document.getElementById("animatedLine");
+
             animatedLine.style.display = "block";
-            let motionAnim = document.getElementById("motionAnim");
-            if (motionAnim) {
-                motionAnim.beginElement();
-            }
+            motionAnim.beginElement();
+
             setTimeout(() => {
                 animatedLine.style.display = "none";
                 movingDot.style.display = "none";
                 popup.style.display = "block";
+                digiLockerBox.classList.add("hidden");
+                uploadBox.classList.add("hidden");
+                submitBtn.classList.add("hidden");
                 createExplosions();
-                setTimeout(() => { location.reload(); }, 5000);
             }, 5000);
         });
+
         function createExplosions() {
             for (let i = 0; i < 30; i++) {
-                let balloon = document.createElement("div");
-                balloon.className = "balloon";
-                balloon.style.left = Math.random() * window.innerWidth + "px";
-                balloon.style.bottom = "-50px";
-                balloon.style.animationDelay = Math.random() * 2 + "s";
-                document.body.appendChild(balloon);
+                //let balloon = document.createElement("div");
+                //balloon.className = "balloon";
+                //balloon.style.left = Math.random() * window.innerWidth + "px";
+                //balloon.style.bottom = "-50px";
+                //balloon.style.animationDelay = Math.random() * 2 + "s";
+                //document.body.appendChild(balloon);
+
                 let star = document.createElement("div");
                 star.className = "star";
                 star.innerHTML = "★";
@@ -389,8 +422,30 @@
                 star.style.fontSize = Math.random() * 30 + 20 + "px";
                 document.body.appendChild(star);
             }
+
+            var end = Date.now() + (50 * 1000);
+            var colors = ['#bb0000', '#ffffff'];
+
+            (function frame() {
+                confetti({
+                    particleCount: 2,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: colors
+                });
+                confetti({
+                    particleCount: 2,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: colors
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
         }
     </script>
 </body>
-
-</html>
