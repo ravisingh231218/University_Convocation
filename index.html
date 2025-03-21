@@ -113,7 +113,14 @@
 
         .side-box.right {
             position: relative;
-            left: -4cm;
+            left: -1cm;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .side-box.left {
+            position: relative;
+            left: -3cm;
             display: flex;
             gap: 10px;
             align-items: center;
@@ -444,6 +451,8 @@
 
                 if (Date.now() < end) {
                     requestAnimationFrame(frame);
+                } else {
+                    location.reload();
                 }
             }());
         }
