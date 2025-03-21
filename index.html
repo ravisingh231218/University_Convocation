@@ -6,7 +6,6 @@
     <title>Data Submission</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
-/* 🌟 Body Background (Smooth Gradient) */
 body {
     background: linear-gradient(to bottom, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb, #a18cd1);
     min-height: 100vh;
@@ -17,10 +16,11 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
+    margin-top: 0.3cm;
     max-height: calc(100vh - 0.8cm);
 }
 
-/* 🌟 Header */
+/* Header Section */
 .header {
     width: 100%;
     display: flex;
@@ -30,13 +30,11 @@ body {
 }
 
 .logo {
-    width: 15vw;
-    max-width: 250px;
-    min-width: 120px;
+    width: 300px;
     height: auto;
 }
 
-/* 🌟 Box Container (Flexible Alignment) */
+/* Box Container */
 .box-container {
     display: flex;
     justify-content: center;
@@ -46,7 +44,6 @@ body {
     flex-wrap: wrap;
 }
 
-/* 🎯 Fixed Size Box */
 .box {
     background: #b0c4de;
     padding: 20px;
@@ -60,17 +57,16 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    transition: transform 0.3s ease-in-out;
 }
 
-/* 🌟 Image Inside Box */
+/* Image inside the Box */
 .box img {
-    width: 80%;
+    width: 100px;
     height: auto;
-    max-width: 100px;
+    max-width: 100%;
 }
 
-/* 🌟 Submit Button */
+/* Submit Button */
 .submit-btn {
     background: #28a745;
     color: white;
@@ -88,10 +84,9 @@ body {
 
 .submit-btn:hover {
     background: #218838;
-    transform: scale(1.05);
 }
 
-/* 🌟 Side Container */
+/* Side Container */
 .side-container {
     position: absolute;
     top: 20px;
@@ -107,7 +102,6 @@ body {
     gap: 15px;
 }
 
-/* 🎯 Right & Left Side Boxes */
 .side-box.right {
     position: relative;
     left: -1cm;
@@ -124,28 +118,7 @@ body {
     align-items: center;
 }
 
-/* 🖥️ Responsive CSS for Laptop */
-@media (max-width: 1024px) {
-    .box-container {
-        gap: 30px;
-    }
-
-    .box {
-        width: 20vw;
-        height: auto;
-    }
-
-    .submit-btn {
-        font-size: 1.1rem;
-        padding: 12px 22px;
-    }
-
-    .logo {
-        width: 20vw;
-    }
-}
-
-/* 🎯 📱 Mobile Responsive Fix */
+/* Responsive CSS for Mobile */
 @media (max-width: 768px) {
     body {
         max-height: none;
@@ -157,8 +130,7 @@ body {
     }
 
     .box {
-        width: 90%;
-        max-width: 250px;
+        width: 80%;
         height: auto;
         padding: 15px;
     }
@@ -193,7 +165,7 @@ body {
     }
 }
 
-/* 🎓 Convocation Styles */
+/* Convocation Styles */
 .main-container {
     text-align: center;
     font-family: 'Roboto', sans-serif;
@@ -236,8 +208,6 @@ body {
     color: #292b2c;
     font-weight: 400;
 }
-
- 
 
     </style>
     <style>
