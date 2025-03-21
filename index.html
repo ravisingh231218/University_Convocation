@@ -5,210 +5,252 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Submission</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <style>
-body {
-    background: linear-gradient(to bottom, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb, #a18cd1);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    margin-top: 0.3cm;
-    max-height: calc(100vh - 0.8cm);
-}
+   <style>
+        body {
+            // background: linear-gradient(to bottom, #b3e0ff, #66c2ff, #1a75ff);
+            /*background: linear-gradient(to bottom, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb, #a18cd1);*/
+            /*background: radial-gradient(circle, rgba(238,187,210,1) 44%, rgba(233,148,227,1) 100%);*/
+            /*background: radial-gradient(circle, rgba(106,181,214,1) 100%, rgba(233,148,227,1) 100%);*/
+            /*background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(204,153,153,1) 50%, rgba(252,176,69,1) 100%);*/
+            /*background: linear-gradient(to bottom, #ff7e5f, #feb47b);*/
+            /*background: linear-gradient(to bottom, #141e30, #243b55);*/
+            background: linear-gradient(135deg, #ffcccc, #ff9999);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            margin-top: 0.3cm;
+            max-height: calc(100vh - 0.8cm);
+        }
 
-/* Header Section */
-.header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
-.logo {
-    width: 300px;
-    height: auto;
-}
 
-/* Box Container */
-.box-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-}
+        .logo {
+            width: 300px;
+            height: auto;
+        }
 
-.box {
-    background: #b0c4de;
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    width: 180px;
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
+        .line-container {
+            position: absolute;
+            width: 80%;
+            height: 180px;
+            top: 420px;
+            left: 11cm;
+            text-align: center;
+            display: none;
+        }
 
-/* Image inside the Box */
-.box img {
-    width: 100px;
-    height: auto;
-    max-width: 100%;
-}
+        .moving-dot {
+            fill: red;
+            animation: moveAlongPath 5s ease-in-out forwards;
+        }
 
-/* Submit Button */
-.submit-btn {
-    background: #28a745;
-    color: white;
-    padding: 15px 25px;
-    font-size: 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-    display: block;
-    margin: auto;
-    position: relative;
-    top: -2cm;
-}
 
-.submit-btn:hover {
-    background: #218838;
-}
+        .side-container {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 50px;
+        }
 
-/* Side Container */
-.side-container {
-    position: absolute;
-    top: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 50px;
-}
+        .side-box {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-.side-box {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+        .box-container {
+            display: flex;
+            justify-content: center;
+            gap: 200px;
+            margin-bottom: 20px;
+        }
 
-.side-box.right {
-    position: relative;
-    left: -1cm;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
+        .box {
+            /*background: #b0c4de;*/
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 180px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #ff7777; /* Slightly darker red */
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3), /* Shadow for 3D effect */
+            inset -5px -5px 10px rgba(255, 255, 255, 0.5); /* Inner light */
+            border-radius: 20px;
+        }
 
-.side-box.left {
-    position: relative;
-    right: -3cm;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
+        .submit-btn {
+            background: #28a745;
+            color: white;
+            padding: 15px 25px;
+            font-size: 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            margin: auto;
+            position: relative;
+            top: -2cm;
+        }
 
-/* Responsive CSS for Mobile */
-@media (max-width: 768px) {
-    body {
-        max-height: none;
-    }
+        .side-box.right {
+            position: relative;
+            left: -4cm;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
 
-    .box-container {
-        flex-direction: column;
-        gap: 20px;
-    }
+        .box img {
+            width: 100px;
+            height: auto;
+            max-width: 100%;
+        }
 
-    .box {
-        width: 80%;
-        height: auto;
-        padding: 15px;
-    }
+        .submit-btn:hover {
+            background: #218838;
+        }
 
-    .submit-btn {
-        position: relative;
-        top: 0;
-        width: 90%;
-        max-width: 300px;
-    }
+        .text-section p {
+            text-transform: uppercase;
+            font-weight: bold;
+        }
 
-    .side-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 0;
-    }
 
-    .side-box {
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-    }
+        .explosion {
+            position: absolute;
+            font-size: 30px;
+            color: yellow;
+            animation: explode 1s linear infinite;
+        }
 
-    .side-box.right, .side-box.left {
-        position: static;
-        justify-content: center;
-        text-align: center;
-    }
+        @@keyframes explode {
+            0% {
+                opacity: 1;
+                transform: scale(1) translate(0, 0);
+            }
 
-    .logo {
-        width: 200px;
-    }
-}
+            100% {
+                opacity: 0;
+                transform: scale(2) translate(var(--x), var(--y));
+            }
+        }
 
-/* Convocation Styles */
-.main-container {
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    color: #222;
-}
+        .file-input {
+            display: none;
+        }
 
-.convocation-title {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: #d9534f;
-}
+        .upload-icon {
+            font-size: 30px;
+            cursor: pointer;
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+        }
 
-.date-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #0275d8;
-}
+        .uploaded {
+            color: green;
+            font-weight: bold;
+        }
 
-.event-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #5cb85c;
-}
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: green;
+            color: white;
+            padding: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 10px;
+            text-align: center;
+        }
 
-.by-title {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #d9534f;
-}
 
-.name-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #292b2c;
-}
 
-.designation-title {
-    font-size: 0.8rem;
-    line-height: 1.2;
-    color: #292b2c;
-    font-weight: 400;
-}
+        .balloon, .star {
+            position: absolute;
+            opacity: 0.8;
+        }
 
+        .balloon {
+            width: 20px;
+            height: 30px;
+            background: red;
+            border-radius: 50%;
+            animation: rise 3s linear infinite;
+        }
+
+        .star {
+            color: yellow;
+            font-size: 30px;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        @@keyframes twinkle {
+            0%, 100% {
+                opacity: 1;
+                text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 165, 0, 0.7);
+            }
+
+            50% {
+                opacity: 0.5;
+                text-shadow: 0 0 5px rgba(255, 99, 71, 0.7), 0 0 15px rgba(255, 140, 0, 0.6);
+            }
+        }
+
+        @@keyframes rise {
+            0% {
+                bottom: 0;
+            }
+
+            100% {
+                bottom: 100%;
+            }
+        }
+
+        @@keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2) translate(var(--x), var(--y));
+                opacity: 0;
+            }
+
+            @@keyframes twinkle {
+                0% {
+                    opacity: 0.3;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
     </style>
     <style>
         .main-container {
@@ -224,8 +266,8 @@ body {
         }
 
         .date-title {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 1.8rem;
+            font-weight: 650;
             color: #0275d8;
         }
 
