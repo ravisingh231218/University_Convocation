@@ -192,22 +192,32 @@
             animation: rise 3s linear infinite;
         }
 
-        .star {
-            font-size: 30px;
-            animation: twinkle 2s ease-in-out infinite;
-        }
+          .star {
+    font-size: 30px;
+    animation: twinkle 2s infinite, colorChange 7s infinite;
+}
 
-        @keyframes twinkle {
-            0%, 100% {
-                opacity: 1;
-                text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 165, 0, 0.7);
-            }
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 15px rgba(255, 215, 0, 1), 0 0 30px rgba(255, 165, 0, 1);
+    }
+    50% {
+        opacity: 0.5;
+        text-shadow: 0 0 10px rgba(255, 99, 71, 1), 0 0 25px rgba(255, 140, 0, 1);
+    }
+}
 
-            50% {
-                opacity: 0.5;
-                text-shadow: 0 0 5px rgba(255, 99, 71, 0.7), 0 0 15px rgba(255, 140, 0, 0.6);
-            }
-        }
+@keyframes colorChange {
+    0% { color: red; }
+    14% { color: orange; }
+    28% { color: yellow; }
+    42% { color: green; }
+    56% { color: blue; }
+    70% { color: indigo; }
+    84% { color: violet; }
+    100% { color: red; }
+}
 
         @keyframes rise {
             0% {
