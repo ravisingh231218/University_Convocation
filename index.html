@@ -26,19 +26,13 @@
             max-height: calc(100vh - 0.8cm);
         }
 
-       .header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: 
-    padding: 10px 0; 
-    z-index: 1000; 
-}
-
+         .header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
 
         .logo {
@@ -308,17 +302,22 @@
             display: none;
         }
     #popupMessage {
-    display: none;
-    position: fixed;
-    top: calc(50% + 7cm);
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 40px; 
-    font-weight: bold;
-    color: green; 
-    text-shadow: 2px 2px 5px black; 
-    animation: fadeIn 1s ease-in-out;
-}
+            display: none;
+            position: fixed;
+            top: calc(50% + 7cm);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            font-weight: bold;
+            color: green;
+            text-shadow: 2px 2px 5px black;
+            animation: fadeIn 1s ease-in-out;
+            white-space: nowrap; 
+            padding: 10px 30px; 
+            max-width: 90vw; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+        }
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
