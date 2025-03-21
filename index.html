@@ -111,13 +111,20 @@
             top: -2cm;
         }
 
-        .side-box.right {
-            position: relative;
-            
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
+       .side-box.right {
+    position: absolute; /* Absolute position kar diya */
+    top: 10px; /* Thoda upar shift karne ke liye */
+    right: 20px; /* Right side par rakhne ke liye */
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Image ko chhota karne ke liye */
+.side-box.right img {
+    width: 150px;  /* Width ko chhota kiya */
+    height: auto;  /* Proportions maintain rahenge */
+}
         .side-box.left {
             position: relative;
             right: -3cm;
@@ -341,8 +348,8 @@
     </div>
 
     <div class="header">
-        <a class="navbar-brand" href="#"><img src="/HnbumuNursing/ContentTest/images/logo_full_Login.png" alt="logo" class="logo"
-             style="display: block; margin: 0 auto; width: 500px; height: auto></a>
+        <img src="~/Image2/logo_full.png" alt="Logo" class="logo"
+             style="display: block; margin: 0 auto; width: 500px; height: auto;">
     </div>
     <div class="main-container text-center">
         <h1 class="convocation-title">7th CONVOCATION</h1>
